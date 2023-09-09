@@ -4,7 +4,10 @@ import { useNavigate } from "react-router-dom";
 import InputField from "../../../components/Input";
 import PrimaryButton from "../../../components/button/primary-button";
 import InputSelect from "../../../components/input-select";
-import DatePickerValue from "../../../components/DatePicker";
+import DatePickerValue from "../../../components/date-picker";
+import CheckboxLabels from "../../../components/check-box";
+import SwitchLabels from "../../../components/switch";
+import { BsArrowRight } from "react-icons/bs";
 
 type FormData = {
   firstName: string;
@@ -16,6 +19,7 @@ type FormData = {
 
 export default function SignUp() {
   const navigate = useNavigate();
+  const [isFormFilled, setIsFormFilled] = useState(false);
   const [formData, setFormData] = useState<FormData>({
     firstName: "",
     lastName: "",
@@ -27,12 +31,26 @@ export default function SignUp() {
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+    checkFormFilled();
   };
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Validate the form data and handle the registration logic here
     console.log("Form data submitted:", formData);
+  };
+
+  const checkFormFilled = () => {
+    if (
+      formData.firstName &&
+      formData.lastName &&
+      formData.email &&
+      formData.password &&
+      formData.confirmPassword
+    ) {
+      setIsFormFilled(true);
+    } else {
+      setIsFormFilled(false);
+    }
   };
 
   return (
@@ -101,13 +119,33 @@ export default function SignUp() {
               onChange={handleChange}
               required
             />
-            <PrimaryButton
-              // variant="contained"
-              // color="primary"
-              // type="submit"
-              onClick={() => navigate("/")}
-              label="Sign Up"
-            />
+            <div className="row">
+              <div className="col-12">
+                <div className="row">
+                  <div className="col-4">
+                    <CheckboxLabels label="male" />
+                  </div>
+                  <div className="col-4">
+                    <CheckboxLabels label="female" />
+                  </div>
+                </div>
+              </div>
+              <div className="col-4">
+                <SwitchLabels />
+              </div>
+            </div>
+            {isFormFilled ? ( // Conditionally render the button with the icon
+              <PrimaryButton
+                onClick={() => navigate("/dashboard")}
+                label={
+                  <>
+                    Sign In <BsArrowRight className="ps-2" size={19} />
+                  </>
+                }
+              />
+            ) : (
+              <PrimaryButton onClick={() => navigate("/")} label="Sign Up" />
+            )}
           </form>
         </Paper>
       </Grid>

@@ -2,7 +2,7 @@ import { Button } from "@mui/material";
 
 type ButtonProps = {
   type?:any;
-  label: string;
+  label: any;
   onClick: (...args: any[]) => any;
 };
 

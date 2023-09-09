@@ -3,12 +3,32 @@ import React, { useState } from "react";
 import { Grid, Typography, Paper } from "@mui/material";
 import InputField from "../../../components/Input";
 import PrimaryButton from "../../../components/button/primary-button";
+import { BsArrowRight } from "react-icons/bs";
 
 export default function SignIn() {
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isFormFilled, setIsFormFilled] = useState(false);
+
+  const handleEmailChange = (e: any) => {
+    setEmail(e.target.value);
+    checkFormFilled();
+  };
+
+  const handlePasswordChange = (e: any) => {
+    setPassword(e.target.value);
+    checkFormFilled();
+  };
+
+  const checkFormFilled = () => {
+    if (email && password) {
+      setIsFormFilled(true);
+    } else {
+      setIsFormFilled(false);
+    }
+  };
 
   return (
     <Grid
@@ -22,32 +42,36 @@ export default function SignIn() {
     >
       <Grid item xs={12} sm={6} lg={4}>
         <Paper elevation={3} style={{ padding: "20px" }}>
-          <h4 className='text_grey'>
-            Sign In
-          </h4>
+          <h4 className="text_grey">Sign In</h4>
           <InputField
             label="Email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={handleEmailChange}
           />
           <InputField
             label="Password"
             type="password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={handlePasswordChange}
           />
-          <PrimaryButton
-            onClick={() => navigate("/dashboard")}
-            label="Sign In"
-          />
+          {isFormFilled ? ( // Conditionally render the button with the icon
+            <PrimaryButton
+              onClick={() => navigate("/dashboard")}
+              label={
+                <>
+                  Sign In <BsArrowRight className="ps-2" size={19} />
+                </>
+              }
+            />
+          ) : (
+            <PrimaryButton
+              onClick={() => navigate("/dashboard")}
+              label="Sign In"
+            />
+          )}
           <PrimaryButton onClick={() => navigate("/sign-up")} label="Sign Up" />
         </Paper>
       </Grid>
     </Grid>
-    // <div className='justify-content-center align-items-center'>
-    //     <PrimaryButton variant='contained' onClick={() => navigate('/dashboard') }>
-    //         Go To the Dashboard
-    //     </PrimaryButton>
-    // </div>
   );
 }
