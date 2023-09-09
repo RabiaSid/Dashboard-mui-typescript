@@ -1,38 +1,117 @@
-.App {
-  text-align: center;
+#root{
+	text-size-adjust: 100%;
+	letter-spacing: normal;
+	background-color:#ffffff;
+	margin: 0 auto;
+	width: 100%;
+}
+*{
+	box-sizing: border-box;
+}
+/* .drawer_main{
+} */
+.item_active:hover{
+  border-radius: 8px !important;
+  background: var(--transparency-success, rgba(0, 176, 116, 0.15)) !important;
+  color: #00B074 !important
+}
+.item_active:hover .item_active_icon{
+  color: #00B074 !important
+}
+.item_active:focus{
+  border-radius: 8px !important;
+  background: var(--transparency-success, rgba(0, 176, 116, 0.15)) !important;
+  color: #00B074 !important
+}
+.item_active:focus .item_active_icon{
+  color: #00B074 !important
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.Logo{
+  color: var(--Primary-Text, #333);
+  font-family: Poppins;
+  font-size: 35px;
+  font-style: normal;
+  font-weight: 700;
+  padding-left: 25px;
+  /* line-height: 2.5rem; */
+}
+.LogoDoud{
+  color: var(--theme-color-primary, #00B074);
+font-family: Poppins;
+font-size: 35px;
+font-style: normal;
+font-weight: 700;
+/* line-height: 0.3rem; */
+}
+.LogoSubText{
+color: var(--theme-color-grey-4, #B9BBBD);
+font-feature-settings: 'clig' off, 'liga' off;
+/* Heading/Heading 4 */
+font-family: Barlow;
+font-size: 12px;
+font-style: normal;
+font-weight: 500;
+line-height: 0.1rem;
+padding-left: 25px;
+}
+.accountText{
+color: #FFF;
+font-family: Barlow;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+.accountName{
+color: #FFF;
+font-family: Barlow;
+font-size: 16px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+padding-left:2px
+}
+.drawerCardText{
+color: #FFF;
+font-feature-settings: 'clig' off, 'liga' off;
+font-family: Barlow;
+font-size: 12px;
+font-style: normal;
+font-weight: 500;
+line-height: 20px; /* 166.667% */
+}
+.drawerCardBtn{
+  color: var(--theme-color-dark, #464255);
+text-align: center;
+/* Heading/Heading 5 */
+border: 0;
+border-radius: 5px;
+font-family: Barlow;
+font-size: 12px;
+font-style: normal;
+font-weight: 500;
+line-height: 24px; /* 160% */
+}
+.ScreenTitle{
+color: var(--theme-color-dark, #464255);
+/* Heading/Heading 1 */
+font-family: Barlow;
+font-size: 32px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}
+.btn_primary:hover{
+  background-color: rgb(97, 97, 97) !important;
+}
+.text_grey{
+  font-family: Poppins;
+font-size: 30px;
+font-style: normal;
+font-weight: 500;
+}
+.DatepickerWidth:focus{
+  border: 1px solid green !important;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
